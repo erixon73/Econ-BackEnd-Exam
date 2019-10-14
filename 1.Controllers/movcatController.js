@@ -1,8 +1,8 @@
 const db = require('../3.Database/index')
 
 module.exports = {
-    getCategory : (req, res) => {
-        db.query(`select * from category`, (err, result) => {
+    getMovCat : (req, res) => {
+        db.query(`select m.nama as movie, c.nama as category from movcat mc join movies m on m.id = mc.idmovie join categories c on c.id = mc.idcategory`, (err, result) => {
             try {
                 if(err) throw err
                 res.send(result)

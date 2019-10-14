@@ -1,8 +1,8 @@
 const db = require('../3.Database/index')
 
 module.exports = {
-    getCategory : (req, res) => {
-        db.query(`select * from category`, (err, result) => {
+    getMovie : (req, res) => {
+        db.query(`select * from movies`, (err, result) => {
             try {
                 if(err) throw err
                 res.send(result)
