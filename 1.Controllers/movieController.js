@@ -1,6 +1,16 @@
 const db = require('../3.Database/index')
 
 module.exports = {
+    getCategory : (req, res) => {
+        db.query(`select * from category`, (err, result) => {
+            try {
+                if(err) throw err
+                res.send(result)
+            } catch (err) {
+                console.log(err)
+            }
+        })
+    },
     addMovie : (req, res) => {
         let sql = `insert into movies value (0, '${req.body.namaMovie}', '${req.body.tahunMovie}', '${req.body.deskripsiMovie}')`
         db.query(sql, (err, result) => {
